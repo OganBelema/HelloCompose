@@ -56,7 +56,9 @@ fun CreateBusinessCard() {
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally) {
                 CreateProfileImage()
-                Divider()
+                Divider(modifier = Modifier.padding(12.dp),
+                thickness = 1.dp,
+                color = Color.LightGray)
             }
         }
     }
