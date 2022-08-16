@@ -119,6 +119,30 @@ private fun CreateProfileImage(modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+private fun CreatePortfolioList(data: List<String>) {
+
+}
+
+@Preview
+@Composable
+fun Content(){
+    Box(modifier = Modifier
+        .fillMaxHeight()
+        .fillMaxWidth()
+        .padding(8.dp)) {
+        Surface(modifier = Modifier
+            .padding(4.dp)
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        shape = RoundedCornerShape(corner = CornerSize(8.dp)),
+        border = BorderStroke(2.dp, Color.LightGray)
+        ) {
+            CreatePortfolioList(data = listOf("Portfolio 1", "Portfolio 2", "Portfolio 3"))
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
