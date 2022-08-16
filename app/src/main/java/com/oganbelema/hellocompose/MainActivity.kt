@@ -60,8 +60,21 @@ fun CreateBusinessCard() {
                 thickness = 1.dp,
                 color = Color.LightGray)
                 CreateProfileDetail()
+                CreatePortfolioButton()
             }
         }
+    }
+}
+
+private fun displayPortfolio(){
+
+}
+
+@Composable
+private fun CreatePortfolioButton(modifier: Modifier = Modifier) {
+    Button(onClick = { displayPortfolio() },
+    modifier = modifier.padding(top = 20.dp)) {
+        Text(text = "Portfolio", style = MaterialTheme.typography.button)
     }
 }
 
