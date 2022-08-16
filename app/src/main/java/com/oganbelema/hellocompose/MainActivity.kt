@@ -10,11 +10,14 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -48,27 +51,33 @@ fun CreateBusinessCard() {
             .padding(16.dp),
             shape = RoundedCornerShape(corner = CornerSize(16.dp)),
             elevation = 8.dp) {
-
-            CreateProfileImage()
+            
+            Column(modifier = Modifier.height(300.dp),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally) {
+                CreateProfileImage()
+                Divider()
+            }
         }
     }
 }
 
 @Composable
-private fun CreateProfileImage() {
+private fun CreateProfileImage(modifier: Modifier = Modifier) {
     Surface(
-        modifier = Modifier
+        modifier = modifier
             .size(150.dp)
             .padding(6.dp),
         shape = CircleShape,
-        border = BorderStroke(1.dp, Color.LightGray),
+        border = BorderStroke(0.5.dp, Color.LightGray),
         elevation = 4.dp,
-        color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
+        color = Color.LightGray,
     ) {
         Image(
             painter = painterResource(id = R.drawable.user),
             contentDescription = "User image",
-            modifier = Modifier.size(120.dp)
+            modifier = modifier.size(120.dp),
+            contentScale = ContentScale.Crop
         )
     }
 }
