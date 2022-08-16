@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -13,19 +14,17 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.oganbelema.hellocompose.ui.theme.HelloComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -60,7 +59,7 @@ fun CreateBusinessCard() {
             Column(modifier = Modifier.height(300.dp),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally) {
-                CreateProfileImage()
+                CreateCircleImage(R.drawable.profile)
                 Divider(modifier = Modifier.padding(12.dp),
                 thickness = 1.dp,
                 color = Color.LightGray)
@@ -85,9 +84,7 @@ private fun CreatePortfolioButton(modifier: Modifier = Modifier) {
     if (buttonClickedState.value) {
         Content()
     } else {
-        Box() {
-
-        }
+        Box {}
     }
 }
 
@@ -113,7 +110,7 @@ private fun CreateProfileDetail() {
 }
 
 @Composable
-private fun CreateProfileImage(modifier: Modifier = Modifier) {
+private fun CreateCircleImage(drawable: Int, modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier
             .size(150.dp)
@@ -124,7 +121,7 @@ private fun CreateProfileImage(modifier: Modifier = Modifier) {
         color = Color.LightGray,
     ) {
         Image(
-            painter = painterResource(id = R.drawable.profile),
+            painter = painterResource(id = drawable),
             contentDescription = "User image",
             modifier = modifier.size(120.dp),
             contentScale = ContentScale.Crop
@@ -133,15 +130,30 @@ private fun CreateProfileImage(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun CreatePortfolioList(data: List<String>) {
+private fun CreatePortfolioList(data: List<Portfolio>) {
     LazyColumn {
         items(data) { item ->
-            Text(text = item)
+            Card(modifier = Modifier
+                .padding(13.dp)
+                .fillMaxWidth(),
+            shape = RectangleShape, elevation = 4.dp) {
+                Row(modifier = Modifier
+                    .background(MaterialTheme.colors.surface)
+                    .padding(16.dp)) {
+                    CreateCircleImage(R.drawable.user, modifier = Modifier.size(60.dp))
+
+                    Column(modifier = Modifier
+                        .padding(7.dp)
+                        .align(alignment = Alignment.CenterVertically)) {
+                        Text(text = item.name, fontWeight = FontWeight.Bold)
+                        Text(text = item.description, style = MaterialTheme.typography.body2)
+                    }
+                }
+            }
         }
     }
 }
 
-@Preview
 @Composable
 fun Content(){
     Box(modifier = Modifier
@@ -155,7 +167,7 @@ fun Content(){
         shape = RoundedCornerShape(corner = CornerSize(8.dp)),
         border = BorderStroke(2.dp, Color.LightGray)
         ) {
-            CreatePortfolioList(data = listOf("Portfolio 1", "Portfolio 2", "Portfolio 3"))
+            CreatePortfolioList(data = Portfolio.portfolioList())
         }
     }
 }
