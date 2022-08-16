@@ -9,10 +9,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,7 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.oganbelema.hellocompose.ui.theme.HelloComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -59,8 +59,30 @@ fun CreateBusinessCard() {
                 Divider(modifier = Modifier.padding(12.dp),
                 thickness = 1.dp,
                 color = Color.LightGray)
+                CreateProfileDetail()
             }
         }
+    }
+}
+
+@Composable
+private fun CreateProfileDetail() {
+    Column(
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Belema Ogan",
+            style = MaterialTheme.typography.h4
+        )
+        Text(
+            text = "Software Engineer",
+            style = MaterialTheme.typography.h6
+        )
+        Text(
+            text = "oganbelema@gmail.com",
+            style = MaterialTheme.typography.subtitle1
+        )
     }
 }
 
@@ -76,7 +98,7 @@ private fun CreateProfileImage(modifier: Modifier = Modifier) {
         color = Color.LightGray,
     ) {
         Image(
-            painter = painterResource(id = R.drawable.user),
+            painter = painterResource(id = R.drawable.profile),
             contentDescription = "User image",
             modifier = modifier.size(120.dp),
             contentScale = ContentScale.Crop
