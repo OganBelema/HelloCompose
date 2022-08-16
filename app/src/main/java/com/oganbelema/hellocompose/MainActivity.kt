@@ -3,6 +3,7 @@ package com.oganbelema.hellocompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -110,7 +111,7 @@ private fun CreateProfileDetail() {
 }
 
 @Composable
-private fun CreateCircleImage(drawable: Int, modifier: Modifier = Modifier) {
+private fun CreateCircleImage(@DrawableRes drawable: Int, modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier
             .size(150.dp)
