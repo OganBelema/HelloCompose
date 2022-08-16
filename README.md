@@ -3,6 +3,6 @@ Hilt & Dagger, ROOM DB, ViewModel, Navigation & Clean Architecture
 
 This is based on the BizCard app but contains some modified code.
 
-![App Screenshot](Screenshot/app.png)
+<img src="Screenshot/app.png" alt="App Screenshot" width="100"/>
 
-![App demo](Screenshot/demo.gif)
+<img src="Screenshot/demo.gif" alt="App demo" width="100"/>
