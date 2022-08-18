@@ -1,5 +1,4 @@
-A Compose application from the Udemy course - Kotlin Android App Development: Firebase Firestore, 
-Hilt & Dagger, ROOM DB, ViewModel, Navigation & Clean Architecture 
+A Compose application from the Udemy course - Android Jetpack Compose: The Comprehensive Bootcamp \[2022]
 
 This is based on the BizCard app but contains some modified code.
 
